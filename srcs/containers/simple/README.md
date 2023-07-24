@@ -68,4 +68,11 @@ docker container stop my_simple_docker
 
 Replace "my_simple_docker" with the name you used when running the container.
 
+And the following command is to restart it
+
+```bash
+docker container start my_simple_docker
+```
+
+
 That's it! You have successfully created a simple Docker image with an HTML file and ran it as a container using NGINX. Feel free to modify the `index.html` file or the `Dockerfile` to experiment with different web content and configurations.
