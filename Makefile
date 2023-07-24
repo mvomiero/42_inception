@@ -3,21 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: osboxes <osboxes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/23 12:38:32 by mvomiero          #+#    #+#              #
-#    Updated: 2023/07/24 17:06:54 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/07/24 11:13:37 by osboxes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
-	@docker compose -f ./scrs/docker-compose.yml up -d --build
+	@docker compose -f ./srcs/docker-compose.yml up -d --build	
 
 down:
-	@docker compose -f ./scrs/docker-compose.yml down
+	@docker compose -f ./srcs/docker-compose.yml down
 
 re:
-	@docker compose -f scrs/docker-compose.yml up -d --build
+	@docker compose -f srcs/docker-compose.yml up -d --build
 
 clean:
 	@docker stop $$(docker ps -qa);\
