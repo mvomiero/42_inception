@@ -5,6 +5,7 @@ networks:
 
 volumes:
   wordpress_data:
+  mariadb_data:
 
 services:
   nginx:
@@ -25,8 +26,8 @@ services:
   wordpress:
     container_name: wordpress
     #Create a depedency between the 2 container, db will be launched before
-    #depends_on:
-    #  - mariadb
+    depends_on:
+      - mariadb
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
@@ -38,12 +39,13 @@ services:
     networks:
       - network
 
-mariadb:
+  mariadb:
+    container_name: mariadb
     image: mariadb:latest  # Use the desired MariaDB image version
     restart: always  # Ensure that the MariaDB container restarts if it crashes
     
     env_file:
-      - .envenvironment:
+      - .env
     volumes:
       - mariadb_data:/var/lib/mysql
     # in case of problem we restart automatically the container
