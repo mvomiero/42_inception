@@ -37,3 +37,15 @@ services:
       - wordpress_data:/var/www/html
     networks:
       - network
+
+mariadb:
+    image: mariadb:latest  # Use the desired MariaDB image version
+    restart: always  # Ensure that the MariaDB container restarts if it crashes
+    
+    env_file:
+      - .envenvironment:
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    # in case of problem we restart automatically the container
+    networks:
+      - network
