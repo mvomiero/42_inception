@@ -41,13 +41,27 @@ services:
 
   mariadb:
     container_name: mariadb
-    image: mariadb:latest  # Use the desired MariaDB image version
-    restart: always  # Ensure that the MariaDB container restarts if it crashes
-    
-    env_file:
-      - .env
+    build: ./requirements/mariadb
+    #volumes allow to store in a persistent disk the content in a local disk
+    #db_data is a volume created by docker directly
     volumes:
       - mariadb_data:/var/lib/mysql
     # in case of problem we restart automatically the container
     networks:
       - network
+    restart: always
+    env_file:
+      - .env
+
+#  mariadb:
+#    container_name: mariadb
+#    image: mariadb:latest  # Use the desired MariaDB image version
+#    restart: always  # Ensure that the MariaDB container restarts if it crashes
+#    
+#    env_file:
+#      - .env
+#    volumes:
+#      - mariadb_data:/var/lib/mysql
+#    # in case of problem we restart automatically the container
+#    networks:
+#      - network
