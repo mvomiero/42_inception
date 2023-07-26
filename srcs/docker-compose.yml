@@ -1,5 +1,4 @@
 version: '3'
-project_name: my_wordpress_project
 
 #networks:
 #  network:
