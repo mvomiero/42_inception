@@ -1,11 +1,11 @@
 version: '3'
 
-networks:
-  network:
+#networks:
+#  network:
 
-volumes:
-  wordpress_data:
-  mariadb_data:
+#volumes:
+#  wordpress_data:
+#  mariadb_data:
 
 services:
   nginx:
@@ -65,3 +65,22 @@ services:
 #    # in case of problem we restart automatically the container
 #    networks:
 #      - network
+
+volumes:
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/osboxes/inception_volumes/mysql
+
+      o: bind
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/osboxes/inception_volumes/wordpress
+      o: bind
+
+networks:
+  network:
+    driver: bridge
