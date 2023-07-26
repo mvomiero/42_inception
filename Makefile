@@ -3,14 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: osboxes <osboxes@student.42.fr>            +#+  +:+       +#+         #
+#    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/23 12:38:32 by mvomiero          #+#    #+#              #
-#    Updated: 2023/07/24 11:13:37 by osboxes          ###   ########.fr        #
+#    Updated: 2023/07/26 08:46:46 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
+	@mkdir -p /home/osboxes/data/mysql
+	@mkdir -p /home/osboxes/data/wordpress
 	@docker compose -f ./srcs/docker-compose.yml up -d --build	
 
 down:
@@ -20,10 +22,10 @@ re:
 	@docker compose -f srcs/docker-compose.yml up -d --build
 
 clean:
-	@docker stop $$(docker ps -qa);\
-	docker rm $$(docker ps -qa);\
-	docker rmi -f $$(docker images -qa);\
-	docker volume rm $$(docker volume ls -q);\
-	docker network rm $$(docker network ls -q);\
+	@docker compose -f ./srcs/docker-compose.yml down -v
+	@docker rmi -f $$(docker images -qa)
+	@rm -rf /home/osboxes/data/mysql
+	@rm -rf /home/osboxes/data/wordpress
+
 
 .PHONY: all re down clean

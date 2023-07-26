@@ -1,11 +1,5 @@
 version: '3'
 
-networks:
-  network:
-
-volumes:
-  wordpress_data:
-  mariadb_data:
 
 services:
   nginx:
@@ -65,3 +59,23 @@ services:
 #    # in case of problem we restart automatically the container
 #    networks:
 #      - network
+
+
+volumes:
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/osboxes/data/mysql  # Replace 'login' with your actual login name
+      o: bind
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/osboxes/data/wordpress  # Replace 'login' with your actual login name
+      o: bind
+
+
+networks:
+  network:
+    driver: bridge
