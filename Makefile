@@ -16,7 +16,7 @@ clean:
 	@sudo rm -rf /home/osboxes/data/wordpress
 
 update_sql:
-	./update_sql.sh mvomiero
+	./update_sql.sh
 #	docker cp mariadb:wordpress.sql ./srcs/requirements/mariadb/conf/wordpress.sql
 
 
