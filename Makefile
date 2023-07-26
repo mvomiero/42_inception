@@ -12,8 +12,8 @@ re:
 clean:
 	@docker compose -f ./srcs/docker-compose.yml down -v
 	@docker rmi -f $$(docker images -qa)
-	@rm -rf /home/osboxes/data/mysql
-	@rm -rf /home/osboxes/data/wordpress
+	@sudo rm -rf /home/osboxes/data/mysql
+	@sudo rm -rf /home/osboxes/data/wordpress
 
 
 .PHONY: all re down clean

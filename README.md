@@ -14,19 +14,15 @@ wordpress.sql
 
 !!!! mariadb export .sql
 
-docker exec -it <mariadb_container_name> /bin/bash
-// launch bash in maria db
+docker exec -it mariadb /bin/bash
 apt-get update
 apt-get install -y mysql-client
 mysql -u root -p
 GRANT ALL PRIVILEGES ON mariadb.* TO 'mvomiero'@'%';
 FLUSH PRIVILEGES;
 EXIT;
-mysqldump -u mvomiero -p wordpress > backup.sql
+mysqldump -u mvomiero -p wordpress > wordpress.sql
 exit
-docker cp mariadb:backup.sql ./
-
-
-docker cp <mariadb_container_name>:/path/to/backup.sql /path/on/your/host/backup.sql
+docker cp mariadb:worpress.sql ./srcs/requirements/mariadb/conf/wordpress.sql
 
 
