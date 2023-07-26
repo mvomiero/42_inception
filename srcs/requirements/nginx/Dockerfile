@@ -1,24 +1,22 @@
-FROM	debian:buster
+FROM debian:bullseye
 
-#install all the program
-RUN		apt-get update
-RUN		apt-get install -y nginx \
-                openssl
+# Install all the programs
+RUN apt-get update && apt-get install -y nginx openssl
 
 # nginx SSL
 RUN mkdir /etc/nginx/ssl
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
-       -out /etc/nginx/ssl/mvomiero.crt \
-       -keyout /etc/nginx/ssl/mvomiero.key \
-       -subj "/C=FR/ST=Paris/L=Paris/O=42 School/OU=mvomiero/CN=mvomiero/"
+    -out /etc/nginx/ssl/mvomiero.crt \
+    -keyout /etc/nginx/ssl/mvomiero.key \
+    -subj "/C=FR/ST=Paris/L=Paris/O=42 School/OU=mvomiero/CN=mvomiero/"
 
 COPY ./conf/nginx.conf /etc/nginx/conf.d
 
 # nginx config
 RUN mkdir -p /run/nginx
 
-#the only port allowed
-EXPOSE	443
+# The only port allowed
+EXPOSE 443
 
 # Start nginx
 CMD ["nginx", "-g", "daemon off;"]
