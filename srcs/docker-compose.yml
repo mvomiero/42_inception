@@ -71,14 +71,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/osboxes/inception_volumes/mysql
-
+      device: /home/osboxes/data/mysql  # Replace 'login' with your actual login name
       o: bind
   wordpress_data:
     driver: local
     driver_opts:
       type: none
-      device: /home/osboxes/inception_volumes/wordpress
+      device: /home/osboxes/data/wordpress  # Replace 'login' with your actual login name
       o: bind
 
 networks:
