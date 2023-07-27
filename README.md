@@ -52,7 +52,19 @@ FastCGI (Fast Common Gateway Interface) is a protocol designed to improve the pe
 
 #### Dockerfile
 
-this Dockerfile sets up a container with PHP, PHP-FPM, and the WP-CLI tool, making it suitable for running PHP-based applications like WordPress. The create_wordpress.sh script is configured as the entry point, so when the container is launched, it will execute this script. The PHP-FPM service is started in the foreground, listening on port 9000, ready to handle PHP requests.
+Installs extensions and runs the script.
 
-#### 
+#### Script
+
+ this script installs necessary tools, downloads and configures WordPress, sets up the database, and starts PHP-FPM to serve the WordPress application.
+
+## MariaDB
+
+#### Dockerfile
+
+Installs extensions and runs the script.
+
+#### Script
+
+Configuration of mysql
 
