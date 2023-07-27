@@ -25,4 +25,5 @@ mysqldump -u mvomiero -p wordpress > wordpress.sql
 exit
 docker cp mariadb:worpress.sql ./srcs/requirements/mariadb/conf/wordpress.sql
 
+docker exec -it containername bash
 
