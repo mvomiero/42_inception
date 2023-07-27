@@ -30,42 +30,26 @@ services:
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb
-    #volumes allow to store in a persistent disk the content in a local disk
-    #db_data is a volume created by docker directly
     volumes:
       - mariadb_data:/var/lib/mysql
-    # in case of problem we restart automatically the container
     networks:
       - network
     restart: always
     env_file:
       - .env
 
-#  mariadb:
-#    container_name: mariadb
-#    image: mariadb:latest  # Use the desired MariaDB image version
-#    restart: always  # Ensure that the MariaDB container restarts if it crashes
-#    
-#    env_file:
-#      - .env
-#    volumes:
-#      - mariadb_data:/var/lib/mysql
-#    # in case of problem we restart automatically the container
-#    networks:
-#      - network
-
 volumes:
   mariadb_data:
     driver: local
     driver_opts:
       type: none
-      device: /home/osboxes/data/mysql  # Replace 'login' with your actual login name
+      device: /home/osboxes/data/mysql
       o: bind
   wordpress_data:
     driver: local
     driver_opts:
       type: none
-      device: /home/osboxes/data/wordpress  # Replace 'login' with your actual login name
+      device: /home/osboxes/data/wordpress
       o: bind
 
 networks:
