@@ -1,20 +1,9 @@
 version: '3'
 
-#networks:
-#  network:
-
-#volumes:
-#  wordpress_data:
-#  mariadb_data:
-
 services:
   nginx:
     container_name: nginx
     build: ./requirements/nginx
-    #depends_on:
-    #  - adminer
-    #  - redis
-    #  - hugo
     ports:
       - 443:443
     volumes:
@@ -25,7 +14,6 @@ services:
 
   wordpress:
     container_name: wordpress
-    #Create a depedency between the 2 container, db will be launched before
     depends_on:
       - mariadb
     build:
