@@ -47,13 +47,32 @@ sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', '$HOST' );/g" /va
 # only owner who has the read and write permissions for config
 #chmod 600 wp-config.php
 
-wp core install --url=$URL \
+
+
+start_php_fpm() {
+    php-fpm7.3 -F
+}
+
+# Function to run WordPress configuration commands
+configure_wordpress() {
+    # Sleep to give PHP-FPM a moment to start (adjust as needed)
+    sleep 5
+
+    wp core install --url=$URL \
                 --title=$TITLE \
                 --admin_name=$ADMIN_USER \
                 --admin_password=$ADMIN_PASSWORD \
                 --admin_email=$ADMIN_EMAIL \
                 --allow-root \
 
-wp user create $WP_USER $WP_USER@example.com  --user_pass=$WP_USER_PASS --allow-root
+	wp user create $WP_USER $WP_USER@example.com  --user_pass=$WP_USER_PASS --allow-root
+}
 
-php-fpm7.3 -F
+# Start PHP-FPM in the background
+start_php_fpm &
+
+# Run WordPress configuration commands
+configure_wordpress &
+
+# Use wait to wait for both background processes to complete before moving on
+wait
