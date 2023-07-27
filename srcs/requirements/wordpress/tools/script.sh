@@ -44,10 +44,6 @@ sed -i 's/password_here/'$MYSQL_PASSWORD'/g' /var/www/html/wp-config.php
 # set The hostname of the That base
 sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', '$HOST' );/g" /var/www/html/wp-config.php
 
-# only owner who has the read and write permissions for config
-#chmod 600 wp-config.php
-
-
 
 start_php_fpm() {
     php-fpm7.3 -F
