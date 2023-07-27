@@ -1,44 +1,10 @@
-FROM debian:bullseye
+FROM debian:buster
 
-RUN apt-get update && apt-get -y install \
-    wget \
-    curl \
-    bash \
-    php \
-    php-cgi \
-    php-mysql \
-    php-fpm \
-    php-pdo \
-    php-gd php-cli \
-    php-mbstring \
-    redis \
-    php-redis \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get  update && apt-get  upgrade -y && apt-get  install curl -y\
+    && apt-get install -y php php-curl php-mysql && apt-get install -y php7.3-fpm
 
-# To install wp_cli (word press command line tool) right directory /usr/local/bin
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
-    && chmod +x wp-cli.phar \
-    && mv wp-cli.phar /usr/local/bin/wp
+COPY /tools/script.sh .
 
-# Copy the .conf in the html directory
-# www.conf contains PHP-FPM pool configuration settings
-COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/
+RUN  chmod +x script.sh
 
-# Create the folder to enable php start
-RUN mkdir /run/php
-
-# We copy the script, give the right to launch it in local on our computer
-COPY ./tools/create_wordpress.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/create_wordpress.sh
-RUN /usr/local/bin/create_wordpress.sh
-ENTRYPOINT ["/usr/local/bin/create_wordpress.sh"]
-
-# We go the html directory
-WORKDIR /var/www/html/
-# We expose the 9000 port
-EXPOSE 9000
-
-# Specifies the default command to run when the container starts. 
-# It starts PHP-FPM in the foreground (-F) mode, which keeps PHP-FPM running 
-# and allows the container to be managed properly by Docker
-CMD ["/usr/sbin/php-fpm7.4", "-F"]
+ENTRYPOINT  [ "./script.sh" ] 
