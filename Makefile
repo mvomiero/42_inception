@@ -22,6 +22,7 @@ update_sql:
 test_connection:
 	-curl -I  https://mvomiero.42.fr
 	-curl -I  http://mvomiero.42.fr
+	-curl -I  http://mvomiero.42.fr:80
 
 
 
