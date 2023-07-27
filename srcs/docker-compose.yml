@@ -22,6 +22,8 @@ services:
     restart: always
     env_file:
       - .env
+    ports:
+      - 900
     volumes:
       - wordpress_data:/var/www/html
     networks:
@@ -35,6 +37,8 @@ services:
     networks:
       - network
     restart: always
+    ports:
+      - 3306
     env_file:
       - .env
 
