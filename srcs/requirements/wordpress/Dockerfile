@@ -15,12 +15,13 @@ RUN apt-get update && apt-get -y install \
     php-redis \
     && rm -rf /var/lib/apt/lists/*
 
-# I need to install wp_cli command and put it in the right directory /usr/local/bin
+# To install wp_cli (word press command line tool) right directory /usr/local/bin
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x wp-cli.phar \
     && mv wp-cli.phar /usr/local/bin/wp
 
 # Copy the .conf in the html directory
+# www.conf contains PHP-FPM pool configuration settings
 COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/
 
 # Create the folder to enable php start
