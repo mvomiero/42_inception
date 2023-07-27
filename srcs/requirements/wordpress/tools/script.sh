@@ -61,7 +61,7 @@ configure_wordpress() {
                 --admin_email=$ADMIN_EMAIL \
                 --allow-root \
 
-	wp user create $WP_USER $WP_USER@example.com  --user_pass=$WP_USER_PASS --allow-root
+	wp user create $WP_USER $WP_USER_EMAIL  --user_pass=$WP_USER_PASSWORD --allow-root
 }
 
 # Start PHP-FPM in the background
