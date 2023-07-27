@@ -40,3 +40,11 @@ The nginx.conf file configures an Nginx server to handle HTTPS traffic on port 4
 ##### FastCGI
 FastCGI (Fast Common Gateway Interface) is a protocol designed to improve the performance and efficiency of CGI (Common Gateway Interface) scripts in web servers. CGI is a standard method for web servers to interact with external programs to process dynamic content and generate HTML pages.
 
+## Wordpress
+
+#### Dockerfile
+
+this Dockerfile sets up a container with PHP, PHP-FPM, and the WP-CLI tool, making it suitable for running PHP-based applications like WordPress. The create_wordpress.sh script is configured as the entry point, so when the container is launched, it will execute this script. The PHP-FPM service is started in the foreground, listening on port 9000, ready to handle PHP requests.
+
+####
+

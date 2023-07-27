@@ -20,6 +20,16 @@ else
     sed -i "s/database_name_here/$MYSQL_DATABASE/g" wp-config-sample.php
     cp wp-config-sample.php wp-config.php
 
+
+	wp core install --url=mvomiero.42.fr \
+                --title=lampstack \
+                --admin_name=$WP_ADMIN \
+                --admin_password=$WP_ADMIN_PASSWORD \
+                --admin_email=colocomarco@gmail.com \
+                --allow-root \
+
+	wp user create $WP_USER $WP_USER@example.com  --user_pass=$WP_USER_PASSWORD --allow-root
+
 fi
 
 exec "$@"

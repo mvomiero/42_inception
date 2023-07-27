@@ -30,6 +30,7 @@ RUN mkdir /run/php
 # We copy the script, give the right to launch it in local on our computer
 COPY ./tools/create_wordpress.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/create_wordpress.sh
+#RUN /usr/local/bin/create_wordpress.sh
 ENTRYPOINT ["/usr/local/bin/create_wordpress.sh"]
 
 # We go the html directory
@@ -38,5 +39,7 @@ WORKDIR /var/www/html/
 # We expose the 9000 port
 EXPOSE 9000
 
-# Launch PHP FPM in foreground and ignore daemonize from conf file (-F)
+# Specifies the default command to run when the container starts. 
+# It starts PHP-FPM in the foreground (-F) mode, which keeps PHP-FPM running 
+# and allows the container to be managed properly by Docker
 CMD ["/usr/sbin/php-fpm7.4", "-F"]
