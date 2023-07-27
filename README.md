@@ -37,3 +37,6 @@ The Dockerfile sets up a container with Nginx, installs OpenSSL to generate a se
 
 The nginx.conf file configures an Nginx server to handle HTTPS traffic on port 443 with SSL/TLS encryption. It specifies a domain name (mvomiero.42.fr) and points to SSL certificate and key files. The server is set to serve static files from the /var/www/html directory and process PHP files via a FastCGI server listening at wordpress:9000. It also specifies the default index files to try and defines some FastCGI parameters for PHP handling.
 
+##### FastCGI
+FastCGI (Fast Common Gateway Interface) is a protocol designed to improve the performance and efficiency of CGI (Common Gateway Interface) scripts in web servers. CGI is a standard method for web servers to interact with external programs to process dynamic content and generate HTML pages.
+

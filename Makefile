@@ -25,5 +25,4 @@ test_connection:
 	-curl -I  http://mvomiero.42.fr:80
 
 
-
 .PHONY: all re down clean
