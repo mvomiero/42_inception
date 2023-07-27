@@ -19,5 +19,10 @@ update_sql:
 	./update_sql.sh
 #	docker cp mariadb:wordpress.sql ./srcs/requirements/mariadb/conf/wordpress.sql
 
+test_connection:
+	-curl -I  https://mvomiero.42.fr
+	-curl -I  http://mvomiero.42.fr
+
+
 
 .PHONY: all re down clean
