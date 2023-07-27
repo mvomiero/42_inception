@@ -1,3 +1,11 @@
+first make
+RUN /usr/local/bin/create_wordpress.sh
+#ENTRYPOINT
+
+second make
+RUN /usr/local/bin/create_wordpress.sh
+ENTRYPOINT
+
 to ssh
 
 hostname -I, pick the first
@@ -46,5 +54,5 @@ FastCGI (Fast Common Gateway Interface) is a protocol designed to improve the pe
 
 this Dockerfile sets up a container with PHP, PHP-FPM, and the WP-CLI tool, making it suitable for running PHP-based applications like WordPress. The create_wordpress.sh script is configured as the entry point, so when the container is launched, it will execute this script. The PHP-FPM service is started in the foreground, listening on port 9000, ready to handle PHP requests.
 
-####
+#### 
 

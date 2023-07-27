@@ -24,5 +24,9 @@ test_connection:
 	-curl -I  http://mvomiero.42.fr
 	-curl -I  http://mvomiero.42.fr:80
 
+prune:
+	@docker system prune --all --force
+	@echo "\033[1m\033[31mCACHE REMOVED\033[1m"
+
 
 .PHONY: all re down clean
