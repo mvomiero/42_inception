@@ -10,10 +10,19 @@ re:
 	@docker compose -f srcs/docker-compose.yml up -d --build
 
 clean:
-	@docker compose -f ./srcs/docker-compose.yml down -v
-	@docker rmi -f $$(docker images -qa)
+	@docker stop $$(docker ps -qa);\
+	docker rm $$(docker ps -qa);\
+	docker rmi -f $$(docker images -qa);\
+	docker volume rm $$(docker volume ls -q);\
+	docker network rm $$(docker network ls -q)
 	@sudo rm -rf /home/osboxes/data/mysql
 	@sudo rm -rf /home/osboxes/data/wordpress
+
+#clean:
+#	@docker compose -f ./srcs/docker-compose.yml down -v
+#	@docker rmi -f $$(docker images -qa)
+#	@sudo rm -rf /home/osboxes/data/mysql
+#	@sudo rm -rf /home/osboxes/data/wordpress
 
 update_sql:
 	./update_sql.sh
