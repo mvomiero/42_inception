@@ -64,11 +64,10 @@ configure_wordpress() {
 	wp user create $WP_USER $WP_USER_EMAIL  --user_pass=$WP_USER_PASSWORD --allow-root
 }
 
-# Start PHP-FPM in the background
+# Start PHP-FPM
 start_php_fpm &
 
 # Run WordPress configuration commands
 configure_wordpress &
 
-# Use wait to wait for both background processes to complete before moving on
 wait
