@@ -1,22 +1,10 @@
 
-Step 1: Create the HTML file
+#### Step 1: Create the HTML file
 
 Create a file named `index.html` with the following content:
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Simple Docker Web Page</title>
-</head>
-<body>
-    <h1>Hello, Docker!</h1>
-    <p>This is a simple Docker container serving a static HTML page.</p>
-</body>
-</html>
-```
 
-Step 2: Create the Dockerfile
+#### Step 2: Create the Dockerfile
 
 Create a file named `Dockerfile` (no file extension) with the following content:
 
@@ -31,7 +19,7 @@ COPY index.html /usr/share/nginx/html/
 EXPOSE 80
 ```
 
-Step 3: Build the Docker image
+#### Step 3: Build the Docker image
 
 Open a terminal or command prompt in the directory where your `Dockerfile` and `index.html` are located. Then, run the following command to build the Docker image:
 
@@ -41,7 +29,7 @@ docker build -t simple .
 
 The `docker build` command reads the `Dockerfile` and creates an image named `simple` using the current directory as the build context. The `-t` flag tags the image with the name "simple."
 
-Step 4: Run the Docker container
+#### Step 4: Run the Docker container
 
 Now that you have the Docker image, you can run a container based on it. Use the following command:
 
@@ -54,11 +42,11 @@ Explanation of the command:
 - `-d`: This flag runs the container in detached mode, which means it runs in the background.
 - `-p 9000:80`: This maps port 9000 on the host to port 80 inside the container. So, you can access the web page served by the container at `http://localhost:9000` in your web browser.
 
-Step 5: Access the web page
+#### Step 5: Access the web page
 
 With the container running, open your web browser and go to `http://localhost:9000`. You should see the simple web page with the "Hello, Docker!" message.
 
-Step 6: Stop the container
+#### Step 6: Stop the container
 
 To stop the running container, you can use the following command:
 
